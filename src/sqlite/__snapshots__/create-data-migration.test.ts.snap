@@ -1,0 +1,62 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sqlite/create-data-migration > should create a simple table with integer values 1`] = `
+"INSERT INTO test (_id, value) VALUES
+  (0, 1),
+  (1, 2),
+  (2, 3);"
+`;
+
+exports[`sqlite/create-data-migration > should create a table with mixed integer and real values 1`] = `
+"INSERT INTO test (_id, item) VALUES
+  (0, 1),
+  (1, 2.5),
+  (2, 3);"
+`;
+
+exports[`sqlite/create-data-migration > should create a table with nullable fields when null values are present 1`] = `
+"INSERT INTO test (_id, value) VALUES
+  (0, 1),
+  (1, NULL),
+  (2, 3);"
+`;
+
+exports[`sqlite/create-data-migration > should create nested tables for arrays with foreign key relationships 1`] = `
+"INSERT INTO test (_id, value) VALUES
+  (0, 'a'),
+  (1, 'b');
+
+INSERT INTO test_items (_parent_id, _id, value) VALUES
+  (0, 0, 1),
+  (0, 1, 2),
+  (0, 2, 3),
+  (1, 0, 4),
+  (1, 1, 5),
+  (1, 2, 6);"
+`;
+
+exports[`sqlite/create-data-migration > should generate migration for objects with different property names 1`] = `
+"INSERT INTO test (_id, a, b) VALUES
+  (0, 'a', NULL),
+  (1, NULL, 'b');"
+`;
+
+exports[`sqlite/create-data-migration > should handle deeply nested arrays with multiple levels of relationships 1`] = `
+"INSERT INTO test (_id, value) VALUES
+  (0, 'a');
+
+INSERT INTO test_items (_parent_id, _id) VALUES
+  (0, 0);
+
+INSERT INTO test_items_elements (_parent_id, _id, value) VALUES
+  (0, 0, 1),
+  (0, 1, 0);"
+`;
+
+exports[`sqlite/create-data-migration > should handle empty arrays 1`] = `
+"INSERT INTO test (_id, value) VALUES
+  (0, 'a'),
+  (1, 'b');"
+`;
+
+exports[`sqlite/create-data-migration > should handle empty input array 1`] = `""`;

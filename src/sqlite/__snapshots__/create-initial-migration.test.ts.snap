@@ -1,0 +1,95 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`sqlite/create-initial-migration > should create a simple table with integer values 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  value INTEGER NOT NULL,
+  PRIMARY KEY (_id)
+);"
+`;
+
+exports[`sqlite/create-initial-migration > should create a table with mixed integer and real values 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  value REAL NOT NULL,
+  PRIMARY KEY (_id)
+);"
+`;
+
+exports[`sqlite/create-initial-migration > should create a table with nullable fields when null values are present 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  value INTEGER,
+  PRIMARY KEY (_id)
+);"
+`;
+
+exports[`sqlite/create-initial-migration > should create nested tables for arrays with foreign key relationships 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  value TEXT NOT NULL,
+  PRIMARY KEY (_id)
+);
+
+CREATE TABLE test_items (
+  _parent_id INTEGER NOT NULL,
+  _id INTEGER NOT NULL,
+  value INTEGER NOT NULL,
+  PRIMARY KEY (_parent_id, _id),
+  FOREIGN KEY (_parent_id) REFERENCES test (_id)
+);"
+`;
+
+exports[`sqlite/create-initial-migration > should generate migration for objects with different property names 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  a TEXT,
+  b TEXT,
+  PRIMARY KEY (_id)
+);"
+`;
+
+exports[`sqlite/create-initial-migration > should handle deeply nested arrays with multiple levels of relationships 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  value TEXT NOT NULL,
+  PRIMARY KEY (_id)
+);
+
+CREATE TABLE test_items (
+  _parent_id INTEGER NOT NULL,
+  _id INTEGER NOT NULL,
+  PRIMARY KEY (_parent_id, _id),
+  FOREIGN KEY (_parent_id) REFERENCES test (_id)
+);
+
+CREATE TABLE test_items_elements (
+  _parent_id INTEGER NOT NULL,
+  _id INTEGER NOT NULL,
+  value INTEGER NOT NULL,
+  PRIMARY KEY (_parent_id, _id),
+  FOREIGN KEY (_parent_id) REFERENCES test_items (_id)
+);"
+`;
+
+exports[`sqlite/create-initial-migration > should handle empty arrays 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  value TEXT NOT NULL,
+  PRIMARY KEY (_id)
+);
+
+CREATE TABLE test_items (
+  _parent_id INTEGER NOT NULL,
+  _id INTEGER NOT NULL,
+  PRIMARY KEY (_parent_id, _id),
+  FOREIGN KEY (_parent_id) REFERENCES test (_id)
+);"
+`;
+
+exports[`sqlite/create-initial-migration > should handle empty input array 1`] = `
+"CREATE TABLE test (
+  _id INTEGER NOT NULL,
+  PRIMARY KEY (_id)
+);"
+`;

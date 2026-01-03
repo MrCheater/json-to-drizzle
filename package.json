@@ -1,0 +1,53 @@
+{
+  "name": "json-to-drizzle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrCheater/json-to-drizzle.git"
+  },
+  "author": "Anton Zhukov (mrcheater)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrCheater/json-to-drizzle/issues"
+  },
+  "homepage": "https://github.com/MrCheater/json-to-drizzle#readme",
+  "devDependencies": {
+    "prettier": "^3.7.4",
+    "eslint": "^9.39.2",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.16",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "@eslint/compat": "^2.0.0",
+    "@eslint/js": "^9.39.1",
+    "@types/node": "^24.10.1",
+    "typescript-eslint": "^8.48.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "@vitest/coverage-v8": "^4.0.16"
+  },
+  "dependencies": {},
+  "scripts": {
+    "prettier:check": "prettier '**/*.{svg,yml,js,jsx,ts,tsx,html,md,css,json}' --check",
+    "prettier": "prettier '**/*.{svg,yml,js,jsx,ts,tsx,html,md,css,json}' --write",
+    "lint": "eslint --quiet .",
+    "lint:fix": "eslint --fix --quiet .",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "build": "tsc",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.(ts|tsx|js|jsx|json|yml|md|mdx)": [
+      "prettier --write",
+      "eslint --fix"
+    ],
+    "*.css": [
+      "prettier --write",
+      "stylelint --formatter=verbose --fix"
+    ]
+  }
+}
