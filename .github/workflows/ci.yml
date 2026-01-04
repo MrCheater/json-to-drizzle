@@ -58,7 +58,7 @@ jobs:
       - name: Deploy badge to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ secrets.GH_PAGES_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./coverage
           publish_branch: gh-pages
           keep_files: false
