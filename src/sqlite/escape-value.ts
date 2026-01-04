@@ -1,6 +1,6 @@
 import type { NormalizedValue } from "../normalize";
 
-export function escape(value: NormalizedValue | undefined): string {
+export function escapeValue(value: NormalizedValue | undefined): string {
   if (value === null || value === undefined) {
     return "NULL";
   }

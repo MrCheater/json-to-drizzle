@@ -28,9 +28,12 @@
     "typescript-eslint": "^8.48.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
     "@vitest/coverage-v8": "^4.0.16",
-    "coverage-badges-cli": "^2.2.0"
+    "coverage-badges-cli": "^2.2.0",
+    "@types/better-sqlite3": "^7.6.13"
   },
-  "dependencies": {},
+  "dependencies": {
+    "better-sqlite3": "^12.5.0"
+  },
   "scripts": {
     "prettier:check": "prettier '**/*.{svg,yml,js,jsx,ts,tsx,html,md,css,json}' --check",
     "prettier": "prettier '**/*.{svg,yml,js,jsx,ts,tsx,html,md,css,json}' --write",

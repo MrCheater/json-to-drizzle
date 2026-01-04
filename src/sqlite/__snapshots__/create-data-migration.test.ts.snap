@@ -26,13 +26,13 @@ exports[`sqlite/create-data-migration > should create nested tables for arrays w
   (0, 'a'),
   (1, 'b');
 
-INSERT INTO test_items (_parent_id, _id, value) VALUES
+INSERT INTO test_items (_id, _parent_id, value) VALUES
   (0, 0, 1),
-  (0, 1, 2),
-  (0, 2, 3),
-  (1, 0, 4),
-  (1, 1, 5),
-  (1, 2, 6);"
+  (1, 0, 2),
+  (2, 0, 3),
+  (3, 1, 4),
+  (4, 1, 5),
+  (5, 1, 6);"
 `;
 
 exports[`sqlite/create-data-migration > should generate migration for objects with different property names 1`] = `
@@ -45,12 +45,12 @@ exports[`sqlite/create-data-migration > should handle deeply nested arrays with 
 "INSERT INTO test (_id, value) VALUES
   (0, 'a');
 
-INSERT INTO test_items (_parent_id, _id) VALUES
+INSERT INTO test_items (_id, _parent_id) VALUES
   (0, 0);
 
-INSERT INTO test_items_elements (_parent_id, _id, value) VALUES
+INSERT INTO test_items_elements (_id, _parent_id, value) VALUES
   (0, 0, 1),
-  (0, 1, 0);"
+  (1, 0, 0);"
 `;
 
 exports[`sqlite/create-data-migration > should handle empty arrays 1`] = `

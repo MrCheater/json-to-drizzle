@@ -15,15 +15,14 @@ export function createRelationalStructure(
   const nestedData: Map<string, NormalizedData> = new Map();
   const selfData: Record<string, NormalizedValue>[] = [];
 
+  fields.set("_id", { key: "_id", type: "integer", isPrimaryKey: true });
   if (parentTable) {
     fields.set("_parent_id", {
       key: "_parent_id",
       type: "integer",
-      isPrimaryKey: true,
       reference: createForeignKey(parentTable, "_id"),
     });
   }
-  fields.set("_id", { key: "_id", type: "integer", isPrimaryKey: true });
 
   const keys = new Set(data.map((row) => Object.keys(row)).flat());
 
@@ -35,9 +34,7 @@ export function createRelationalStructure(
           nestedData.set(key, []);
         }
         const nestedDataByKey = nestedData.get(key)!;
-        value.forEach((item, _id) =>
-          nestedDataByKey.push({ ...item, _parent_id, _id }),
-        );
+        value.forEach((item) => nestedDataByKey.push({ ...item, _parent_id }));
       } else {
         try {
           fieldTypes.set(key, getType(fieldTypes.get(key), value));
@@ -66,7 +63,6 @@ export function createRelationalStructure(
   });
 
   fieldTypes.delete("_parent_id");
-  fieldTypes.delete("_id");
 
   for (const [key, type] of fieldTypes.entries()) {
     const isNullable = fieldIsNullable.get(key);

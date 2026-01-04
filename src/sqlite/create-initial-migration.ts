@@ -24,6 +24,10 @@ export function createInitialMigration(tables: RelationalTable[]): string {
             : []),
         ].join(`,${EOL}`),
         `);`,
+        ...foreignKeys.map(
+          ({ key }) =>
+            `CREATE INDEX idx_${table.name}_${key} ON ${table.name} (${key});`,
+        ),
       ].join(EOL);
     })
     .join(`${EOL}${EOL}`);

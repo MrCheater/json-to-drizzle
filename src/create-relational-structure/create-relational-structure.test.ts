@@ -49,17 +49,16 @@ describe("create-relational-structure", () => {
         data: [],
         fields: [
           {
+            isPrimaryKey: true,
+            key: "_id",
+            type: "integer",
+          },
+          {
             reference: {
               key: "_id",
               table: "test",
             },
-            isPrimaryKey: true,
             key: "_parent_id",
-            type: "integer",
-          },
-          {
-            isPrimaryKey: true,
-            key: "_id",
             type: "integer",
           },
         ],
@@ -162,8 +161,40 @@ describe("create-relational-structure", () => {
   it("should create nested tables for arrays with foreign key relationships", () => {
     expect(
       createRelationalStructure("test", [
-        { value: "a", items: [{ value: 1 }, { value: 2 }, { value: 3 }] },
-        { value: "b", items: [{ value: 4 }, { value: 5 }, { value: 6 }] },
+        {
+          value: "a",
+          items: [
+            {
+              value: 1,
+              elements: [{ value: true }, { value: false }, { value: true }],
+            },
+            {
+              value: 2,
+              elements: [{ value: false }, { value: true }, { value: false }],
+            },
+            {
+              value: 3,
+              elements: [{ value: true }, { value: false }, { value: true }],
+            },
+          ],
+        },
+        {
+          value: "b",
+          items: [
+            {
+              value: 4,
+              elements: [{ value: false }, { value: true }, { value: false }],
+            },
+            {
+              value: 5,
+              elements: [{ value: true }, { value: false }, { value: true }],
+            },
+            {
+              value: 6,
+              elements: [{ value: false }, { value: true }, { value: false }],
+            },
+          ],
+        },
       ]),
     ).toEqual([
       {
@@ -189,14 +220,13 @@ describe("create-relational-structure", () => {
         fields: [
           {
             isPrimaryKey: true,
+            key: "_id",
+            type: "integer",
+          },
+          {
             key: "_parent_id",
             type: "integer",
             reference: { key: "_id", table: "test" },
-          },
-          {
-            isPrimaryKey: true,
-            key: "_id",
-            type: "integer",
           },
           {
             key: "value",
@@ -207,9 +237,123 @@ describe("create-relational-structure", () => {
           { _parent_id: 0, _id: 0, value: 1 },
           { _parent_id: 0, _id: 1, value: 2 },
           { _parent_id: 0, _id: 2, value: 3 },
-          { _parent_id: 1, _id: 0, value: 4 },
-          { _parent_id: 1, _id: 1, value: 5 },
-          { _parent_id: 1, _id: 2, value: 6 },
+          { _parent_id: 1, _id: 3, value: 4 },
+          { _parent_id: 1, _id: 4, value: 5 },
+          { _parent_id: 1, _id: 5, value: 6 },
+        ],
+      },
+      {
+        name: "test_items_elements",
+        fields: [
+          {
+            isPrimaryKey: true,
+            key: "_id",
+            type: "integer",
+          },
+          {
+            key: "_parent_id",
+            reference: {
+              key: "_id",
+              table: "test_items",
+            },
+            type: "integer",
+          },
+          {
+            key: "value",
+            type: "boolean",
+          },
+        ],
+        data: [
+          {
+            _id: 0,
+            _parent_id: 0,
+            value: true,
+          },
+          {
+            _id: 1,
+            _parent_id: 0,
+            value: false,
+          },
+          {
+            _id: 2,
+            _parent_id: 0,
+            value: true,
+          },
+          {
+            _id: 3,
+            _parent_id: 1,
+            value: false,
+          },
+          {
+            _id: 4,
+            _parent_id: 1,
+            value: true,
+          },
+          {
+            _id: 5,
+            _parent_id: 1,
+            value: false,
+          },
+          {
+            _id: 6,
+            _parent_id: 2,
+            value: true,
+          },
+          {
+            _id: 7,
+            _parent_id: 2,
+            value: false,
+          },
+          {
+            _id: 8,
+            _parent_id: 2,
+            value: true,
+          },
+          {
+            _id: 9,
+            _parent_id: 3,
+            value: false,
+          },
+          {
+            _id: 10,
+            _parent_id: 3,
+            value: true,
+          },
+          {
+            _id: 11,
+            _parent_id: 3,
+            value: false,
+          },
+          {
+            _id: 12,
+            _parent_id: 4,
+            value: true,
+          },
+          {
+            _id: 13,
+            _parent_id: 4,
+            value: false,
+          },
+          {
+            _id: 14,
+            _parent_id: 4,
+            value: true,
+          },
+          {
+            _id: 15,
+            _parent_id: 5,
+            value: false,
+          },
+          {
+            _id: 16,
+            _parent_id: 5,
+            value: true,
+          },
+          {
+            _id: 17,
+            _parent_id: 5,
+            value: false,
+          },
         ],
       },
     ] satisfies RelationalTable[]);
@@ -244,14 +388,13 @@ describe("create-relational-structure", () => {
         fields: [
           {
             isPrimaryKey: true,
+            key: "_id",
+            type: "integer",
+          },
+          {
             key: "_parent_id",
             type: "integer",
             reference: { key: "_id", table: "test" },
-          },
-          {
-            isPrimaryKey: true,
-            key: "_id",
-            type: "integer",
           },
         ],
         data: [{ _parent_id: 0, _id: 0 }],
@@ -261,14 +404,13 @@ describe("create-relational-structure", () => {
         fields: [
           {
             isPrimaryKey: true,
+            key: "_id",
+            type: "integer",
+          },
+          {
             key: "_parent_id",
             type: "integer",
             reference: { key: "_id", table: "test_items" },
-          },
-          {
-            isPrimaryKey: true,
-            key: "_id",
-            type: "integer",
           },
           {
             key: "value",
