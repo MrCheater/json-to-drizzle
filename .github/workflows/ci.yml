@@ -46,10 +46,13 @@ jobs:
       - name: Run tests
         run: npm run test:coverage
 
-      - name: Generate coverage badge SVG
-        run: |
-          npm install --global coverage-badge-cli
-          coverage-badge < coverage/coverage-summary.json > coverage/badge.svg
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          style: flat
+          source: coverage/coverage-summary.json
+          output: coverage/badge.svg
+          jsonPath: totals.percent_covered
 
       - name: Deploy badge to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
