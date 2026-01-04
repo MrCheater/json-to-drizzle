@@ -50,7 +50,7 @@ jobs:
         uses: jaywcjlove/coverage-badges-cli@main
         with:
           style: flat
-          scale: "1.4"
+          scale: "1.35"
           source: coverage/coverage-summary.json
           output: coverage/badge.svg
           jsonPath: total.statements.pct
