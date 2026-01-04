@@ -50,10 +50,10 @@ jobs:
         uses: jaywcjlove/coverage-badges-cli@main
         with:
           style: flat
-          scale: '2'
+          scale: "2"
           source: coverage/coverage-summary.json
           output: coverage/badge.svg
-          jsonPath: totals.percent_covered
+          jsonPath: total.statements.pct
 
       - name: Deploy badge to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
