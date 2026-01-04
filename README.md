@@ -4,6 +4,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/MrCheater/json-to-drizzle?style=for-the-badge&logo=github)](https://github.com/MrCheater/json-to-drizzle/network)
 [![GitHub issues](https://img.shields.io/github/issues/MrCheater/json-to-drizzle?style=for-the-badge&logo=github)](https://github.com/MrCheater/json-to-drizzle/issues)
 [![GitHub license](https://img.shields.io/github/license/MrCheater/json-to-drizzle?style=for-the-badge)](https://github.com/MrCheater/json-to-drizzle/blob/main/LICENSE)
+[![Test Coverage](https://raw.githubusercontent.com/MrCheater/json-to-drizzle/gh-pages/badge.svg)](https://mrcheater.github.io/json-to-drizzle/)
 [![npm version](https://img.shields.io/npm/v/json-to-drizzle?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/json-to-drizzle)
 [![npm downloads](https://img.shields.io/npm/dm/json-to-drizzle?style=for-the-badge&logo=npm)](https://www.npmjs.com/package/json-to-drizzle)
 [![bundle size](https://img.shields.io/bundlephobia/min/json-to-drizzle?style=for-the-badge&logo=npm)](https://bundlephobia.com/package/json-to-drizzle)

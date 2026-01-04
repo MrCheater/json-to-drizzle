@@ -1,6 +1,6 @@
 name: CI Pipeline
 
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   install-and-cache:
@@ -44,7 +44,24 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Run tests
-        run: npm run test
+        run: npm run test:coverage
+
+      - name: Create Coverage Badges
+        uses: jaywcjlove/coverage-badges-cli@main
+        with:
+          style: flat
+          scale: "1.4"
+          source: coverage/coverage-summary.json
+          output: coverage/badge.svg
+          jsonPath: total.statements.pct
+
+      - name: Deploy badge to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
+          publish_branch: gh-pages
+          keep_files: false
 
   code-quality:
     runs-on: ubuntu-latest

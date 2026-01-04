@@ -27,7 +27,8 @@
     "@types/node": "^24.10.1",
     "typescript-eslint": "^8.48.1",
     "eslint-plugin-simple-import-sort": "^12.1.1",
-    "@vitest/coverage-v8": "^4.0.16"
+    "@vitest/coverage-v8": "^4.0.16",
+    "coverage-badges-cli": "^2.2.0"
   },
   "dependencies": {},
   "scripts": {
@@ -36,7 +37,7 @@
     "lint": "eslint --quiet .",
     "lint:fix": "eslint --fix --quiet .",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage",
+    "test:coverage": "vitest run --coverage && coverage-badges --output coverage/badge.svg",
     "build": "tsc",
     "prepare": "husky"
   },
