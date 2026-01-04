@@ -49,7 +49,7 @@ jobs:
       - name: Create Coverage Badges
         uses: jaywcjlove/coverage-badges-cli@main
         with:
-          style: flat
+          style: classic
           source: coverage/coverage-summary.json
           output: coverage/badge.svg
           jsonPath: totals.percent_covered
