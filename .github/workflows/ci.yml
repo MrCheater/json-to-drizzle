@@ -44,7 +44,20 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
 
       - name: Run tests
-        run: npm run test
+        run: npm run test:coverage
+
+      - name: Generate coverage badge SVG
+        run: |
+          npm install --global coverage-badge-cli
+          coverage-badge < coverage/coverage-summary.json > coverage/badge.svg
+
+      - name: Deploy badge to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./coverage
+          publish_branch: gh-pages
+          keep_files: false
 
   code-quality:
     runs-on: ubuntu-latest
