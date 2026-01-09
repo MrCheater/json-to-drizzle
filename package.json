@@ -1,38 +1,42 @@
 {
   "name": "json-to-drizzle",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.1",
+  "description": "JSON to Drizzle CLI: Convert JSON → Drizzle ORM. Features: 📊 Schema generation, 🔄 Migration scripts, 🔧 Typed Drizzle wrappers, 🗄️ Data seeding. Bootstrap your database from JSON structures instantly",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "type": "module",
+  "type": "commonjs",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MrCheater/json-to-drizzle.git"
   },
-  "author": "Anton Zhukov (mrcheater)",
+  "author": "Anton Zhukov (MrCheater)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MrCheater/json-to-drizzle/issues"
   },
   "homepage": "https://github.com/MrCheater/json-to-drizzle#readme",
+  "bin": {
+    "json-to-drizzle": "./bin/run.js"
+  },
   "devDependencies": {
-    "prettier": "^3.7.4",
-    "eslint": "^9.39.2",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.16",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "@eslint/compat": "^2.0.0",
-    "@eslint/js": "^9.39.1",
-    "@types/node": "^24.10.1",
-    "typescript-eslint": "^8.48.1",
-    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "@eslint/js": "^9.39.2",
+    "@types/better-sqlite3": "^7.6.13",
+    "@types/node": "^24.1.0",
     "@vitest/coverage-v8": "^4.0.16",
     "coverage-badges-cli": "^2.2.0",
-    "@types/better-sqlite3": "^7.6.13"
+    "eslint": "^9.39.2",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
+    "rimraf": "^6.1.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.52.0",
+    "vitest": "^4.0.16"
   },
   "dependencies": {
-    "better-sqlite3": "^12.5.0"
+    "better-sqlite3": "^12.5.0",
+    "commander": "^14.0.2"
   },
   "scripts": {
     "prettier:check": "prettier '**/*.{svg,yml,js,jsx,ts,tsx,html,md,css,json}' --check",
@@ -42,7 +46,8 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage && coverage-badges --output coverage/badge.svg",
     "build": "tsc",
-    "prepare": "husky"
+    "prepare": "husky",
+    "cli:dev": "node --import=tsx bin/dev.js"
   },
   "lint-staged": {
     "*.(ts|tsx|js|jsx|json|yml|md|mdx)": [

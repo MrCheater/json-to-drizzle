@@ -27,12 +27,49 @@
 
 Currently supports **SQLite** with plans to expand to PostgreSQL, MySQL, and other databases in future releases.
 
+## 📂 Example Structure
+
+Check out the examples/ directory for ready-to-use JSON samples:
+
+- [`examples/simple/`](https://github.com/MrCheater/json-to-drizzle/tree/main/examples/simple/) - Basic data structures
+
+- [`examples/complex/`](https://github.com/MrCheater/json-to-drizzle/tree/main/examples/complex/) - Real-world scenarios
+
+- [`examples/edge-cases/`](https://github.com/MrCheater/json-to-drizzle/tree/main/examples/edge-cases/) - Special data patterns
+
 ## 📦 Installation
 
-```bash
+```sh
 npm install json-to-drizzle
 # or
 yarn add json-to-drizzle
 # or
 pnpm add json-to-drizzle
+```
+
+## 🚀 Quick Start
+
+### Download an example JSON file
+
+````bash
+```sh
+curl -o example.json https://raw.githubusercontent.com/MrCheater/json-to-drizzle/main/examples/simple/users.json
+````
+
+### Generate SQLite migration
+
+```sh
+npx json-to-drizzle sqlite:init ./example.json ./demo.sqlite3
+```
+
+### Or directly from URL (requires fetch support in your CLI)
+
+```sh
+npx json-to-drizzle sqlite:init https://raw.githubusercontent.com/MrCheater/json-to-drizzle/main/examples/simple/users.json ./demo.db
+```
+
+### Using local JSON file
+
+```sh
+npx json-to-drizzle sqlite:init ./data.json ./app.sqlite3
 ```

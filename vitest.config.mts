@@ -10,5 +10,10 @@ export default defineConfig({
     passWithNoTests: true,
     watch: false,
     testTimeout: 15000,
+    exclude: [
+      'dist/**/*',
+      'node_modules/**/*',
+      "package.json"
+    ]
   },
 });
