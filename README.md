@@ -86,3 +86,20 @@ npx jsonormalize sqlite:setup https://raw.githubusercontent.com/MrCheater/jsonor
 ```sh
 npx jsonormalize sqlite:setup ./data.json ./app.sqlite3
 ```
+
+## ❓ Help
+
+```
+Usage: jsonormalize [options] [command]
+
+JSONormalize — Transform any JSON into a relational database schema. Automatically normalizes nested structures, detects relationships, and generates SQLite
+migrations. Perfect for rapid prototyping, data migrations, and structured data workflows.
+
+Options:
+  -h, --help                          display help for command
+
+Commands:
+  sqlite:setup <json-path> <db-path>  🗄️ Setup tables, indexes and seed with data from JSON
+  sqlite:sql <json-path> <sql-path>   🛠️ Generate SQL for create tables, indexes and seed with data from JSON
+  help [command]                      display help for command
+```
