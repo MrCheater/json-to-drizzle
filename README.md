@@ -1,4 +1,4 @@
-# JSON to Drizzle
+# JSONormalize
 
 [![GitHub stars](https://img.shields.io/github/stars/MrCheater/jsonormalize?style=for-the-badge&logo=github)](https://github.com/MrCheater/jsonormalize/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/MrCheater/jsonormalize?style=for-the-badge&logo=github)](https://github.com/MrCheater/jsonormalize/network)
