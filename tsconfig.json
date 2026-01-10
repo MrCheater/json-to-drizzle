@@ -1,17 +1,14 @@
 {
   "compilerOptions": {
-    "target": "ES2023",
-    "lib": ["ES2023"],
-    "module": "ESNext",
+    "target": "ES2019",
+    "declaration": true,
+    "module": "Node16",
+    "moduleResolution": "node16",
+    "lib": ["ES2019"],
     "types": ["node"],
     "skipLibCheck": true,
-
-    /* Bundler mode */
-    "moduleResolution": "bundler",
-    "verbatimModuleSyntax": true,
     "moduleDetection": "force",
-
-    /* Linting */
+    "esModuleInterop": true,
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -19,7 +16,11 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "noUncheckedIndexedAccess": true,
-    "outDir": "dist"
+    "outDir": "dist",
+    "resolveJsonModule": true
   },
-  "include": ["vite.config.ts", "src/*"]
+  "include": ["vite.config.ts", "src/**/*"],
+  "ts-node": {
+    "esm": true
+  }
 }
