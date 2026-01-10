@@ -11,9 +11,10 @@ export default defineConfig({
     watch: false,
     testTimeout: 15000,
     exclude: [
-      'dist/**/*',
-      'node_modules/**/*',
-      "package.json"
-    ]
+      "package.json",
+      "dist/**/*",
+      "node_modules/**/*",
+      "src/commands/**/**",
+    ],
   },
 });

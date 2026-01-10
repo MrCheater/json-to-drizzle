@@ -1,9 +1,6 @@
 import Database from "better-sqlite3";
 
-import { createRelationalStructure } from "../create-relational-structure";
-import { normalize } from "../normalize";
-import { createDataMigration } from "./create-data-migration";
-import { createInitialMigration } from "./create-initial-migration";
+import { createMigrations } from "./create-migrations";
 
 export function setupTables({
   path = ":memory:",
@@ -14,17 +11,18 @@ export function setupTables({
   prefix: string;
   data: unknown[];
 }) {
+  const { initialMigration, dataMigration } = createMigrations({
+    prefix,
+    data,
+  });
+
   const db = new Database(path);
 
   db.pragma("synchronous = FULL");
 
-  db.exec(
-    createInitialMigration(createRelationalStructure(prefix, normalize(data))),
-  );
+  db.exec(initialMigration);
 
-  db.exec(
-    createDataMigration(createRelationalStructure(prefix, normalize(data))),
-  );
+  db.exec(dataMigration);
 
   db.close();
 }

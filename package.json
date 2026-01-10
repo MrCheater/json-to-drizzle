@@ -1,7 +1,37 @@
 {
-  "name": "json-to-drizzle",
+  "name": "jsonormalize",
   "version": "0.0.1",
-  "description": "JSON to Drizzle CLI: Convert JSON → Drizzle ORM. Features: 📊 Schema generation, 🔄 Migration scripts, 🔧 Typed Drizzle wrappers, 🗄️ Data seeding. Bootstrap your database from JSON structures instantly",
+  "description": "JSONormalize — Transform any JSON into a relational database schema. Automatically normalizes nested structures, detects relationships, and generates SQLite migrations. Perfect for rapid prototyping, data migrations, and structured data workflows.",
+  "keywords": [
+    "json-normalize",
+    "json-to-sql",
+    "schema-generator",
+    "relational-database",
+    "sqlite-migration",
+    "data-normalization",
+    "json-schema",
+    "data-transformation",
+    "database-migration",
+    "json-relational",
+    "sql-generator",
+    "data-modeling",
+    "json-parser",
+    "database-schema",
+    "sql-migrations",
+    "nested-json",
+    "postgresql",
+    "mysql",
+    "orm-tools",
+    "data-structure",
+    "schema-migration",
+    "json-to-database",
+    "data-integration",
+    "etl",
+    "sql-scripts",
+    "automatic-schema",
+    "database-design",
+    "data-formatting"
+  ],
   "main": "dist/index.js",
   "type": "commonjs",
   "repository": {
@@ -32,11 +62,13 @@
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.52.0",
-    "vitest": "^4.0.16"
+    "vitest": "^4.0.16",
+    "@types/node-fetch": "^2.6.13"
   },
   "dependencies": {
     "better-sqlite3": "^12.5.0",
-    "commander": "^14.0.2"
+    "commander": "^14.0.2",
+    "node-fetch": "2.7.0"
   },
   "scripts": {
     "prettier:check": "prettier '**/*.{svg,yml,js,jsx,ts,tsx,html,md,css,json}' --check",
